@@ -5,11 +5,13 @@ import setList from "../../utils/database/setList"
 
 export default function Show(props) {
 
-  function handleShowClose() {
+  function handleShowClose(event) {
     props.setDetailedShow(false)
+    event.preventDefault()
   }
 
-  function handleShowDelete() {
+  function handleShowDelete(event) {
+    event.preventDefault()
     props.setDetailedShow(false)
     props.setWatchList(prevWatchList => {
       let newWatchList = prevWatchList.filter(show => show.id !== props.detailedShow.id)
@@ -33,6 +35,7 @@ export default function Show(props) {
       </button>
 
       <ShowDetails
+        watchList={props.watchList}
         detailedShow={props.detailedShow}
         setDetailedShow={props.setDetailedShow}
       />

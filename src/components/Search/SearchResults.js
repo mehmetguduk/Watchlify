@@ -28,21 +28,22 @@ export default function SearchResults(props) {
             return prevWatchList
           })
         }
-      })
-      getEpisodes(clickedShowId).then(response => {
-        let seasons = []
-        Object.keys(groupBy(response, "season")).map(season => {
-          const episodes = groupBy(response, "season")[season]
-          seasons.push(episodes)
+      }).then(
+        getEpisodes(clickedShowId).then(response => {
+          let seasons = []
+          Object.keys(groupBy(response, "season")).forEach(season => {
+            const episodes = groupBy(response, "season")[season]
+            seasons.push(episodes)
+          })
+          props.setWatchList(prevWatchList => {
+            prevWatchList[0].seasons = seasons
+            prevWatchList[0].watched = []
+            prevWatchList[0].episodeCount = response.length
+            setList(prevWatchList)
+            return prevWatchList
+          })
         })
-        props.setWatchList(prevWatchList => {
-          prevWatchList[0].seasons = seasons
-          prevWatchList[0].watched = []
-          prevWatchList[0].episodeCount = response.length
-          setList(prevWatchList)
-          return prevWatchList
-        })
-      })
+      )
     }
   }
 

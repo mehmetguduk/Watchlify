@@ -13,7 +13,7 @@ div.tabs-container {
     li.tab {
       background-color: #add8e6;
       padding: 10px 20px;
-      width: 150px;
+      width: 175px;
       text-align: center;
       cursor: pointer;
       border-top: 5px solid #add8e6;
@@ -27,7 +27,7 @@ div.tabs-container {
 }
 
 div.search-container {
-  width: 300px;
+  width: 350px;
 
   form.search-form {
     input.search-input {
@@ -50,7 +50,7 @@ div.search-container {
       align-items: center;
       background-color: #e6e6de;
       padding: 10px;
-      width: 150px;
+      width: 175px;
       border: 1px solid #00000028;
       cursor: pointer;
 
@@ -70,7 +70,7 @@ div.search-container {
 }
 
 div.myshows-container {
-  width: 300px;
+  width: 350px;
 
   ul.shows-container {
     user-select: none;
@@ -83,7 +83,7 @@ div.myshows-container {
       align-items: center;
       background-color: rgb(182, 187, 189);
       padding: 10px;
-      width: 150px;
+      width: 175px;
       border: 1px solid #00000028;
       cursor: pointer;
 
@@ -102,33 +102,109 @@ div.show-container {
   user-select: none;
 
   button.show-close {
-    width: 150px;
+    width: 175px;
     padding: 10px 20px;
   }
 
   button.show-delete {
-    width: 150px;
+    width: 175px;
     padding: 10px 20px;
   }
 
   div.show-details-container {
-    width: 300px;
+    display: flex;
+    width: 350px;
 
-    img {
-      width: 20%;
+    div.image-container {
+      width: 40%;
+      position: relative;
+
+      img.detail-image {
+        width: 100%;
+      }
+
+      div.detail-status {
+        height: 15px;
+        width: 15px;
+        border-radius: 5px;
+        position: absolute;
+        left: 3px;
+        top: 3px;
+
+        &.running {
+          background-color: green;
+        }
+
+        &.ended {
+          background-color: red;
+        }
+
+        &.unknown {
+          background-color: gray;
+        }
+
+        &:hover {
+          p.status-hover {
+            display: block;
+          }
+        }
+
+        p.status-hover {
+          display: none;
+          position: relative;
+
+          span.hover-text {
+            background-color: black;
+            color: white;
+            position: absolute;
+            top: 0px;
+            left: 18px;
+            padding: 3px 6px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    div.details-container {
+      div.progress-bar-container {
+        width: 100%;
+        background-color: #eeeeee;
+        border: 1px solid gray;
+        height: 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 1px;
+
+        div.progress {
+          height: 16px;
+          background-color: rgb(5, 141, 5);
+
+          span.progress-percent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
     }
   }
 
   div.show-episodes-container {
-    width: 300px;
+    width: 350px;
 
     div.season-container {
       margin: 20px 0;
       background-color: lightgrey;
 
-      button.season-complete {
-        padding: 10px 20px;
-        width: 300px;
+      span.season-complete {
+        display: block;
+        background-color: white;
+        border: 1px solid black;
+        padding: 5px 10px;
+        width: 350px;
         cursor: pointer;
       }
 
