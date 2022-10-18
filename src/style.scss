@@ -1,0 +1,179 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+div.tabs-container {
+  ul.tab-list {
+    display: flex;
+    list-style-type: none;
+    user-select: none;
+
+    li.tab {
+      background-color: #add8e6;
+      padding: 10px 20px;
+      width: 150px;
+      text-align: center;
+      cursor: pointer;
+      border-top: 5px solid #add8e6;
+
+      &.active {
+        border-top: 5px solid #add8e6;
+        background-color: #89cde4;
+      }
+    }
+  }
+}
+
+div.search-container {
+  width: 300px;
+
+  form.search-form {
+    input.search-input {
+      width: 230px;
+      padding: 5px 10px;
+    }
+    button.search-button {
+      width: 70px;
+      padding: 5px 10px;
+    }
+  }
+  ul.search-results {
+    user-select: none;
+    list-style-type: none;
+
+    li.result {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #e6e6de;
+      padding: 10px;
+      width: 150px;
+      border: 1px solid #00000028;
+      cursor: pointer;
+
+      &.inlist {
+        background-color: #e4e4b2;
+      }
+
+      img.result-image {
+        width: 50%;
+        -webkit-user-drag: none;
+      }
+      h5.result-name {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+div.myshows-container {
+  width: 300px;
+
+  ul.shows-container {
+    user-select: none;
+    list-style-type: none;
+
+    li.show {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(182, 187, 189);
+      padding: 10px;
+      width: 150px;
+      border: 1px solid #00000028;
+      cursor: pointer;
+
+      img.show-image {
+        width: 50%;
+        -webkit-user-drag: none;
+      }
+      h5.show-name {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+div.show-container {
+  user-select: none;
+
+  button.show-close {
+    width: 150px;
+    padding: 10px 20px;
+  }
+
+  button.show-delete {
+    width: 150px;
+    padding: 10px 20px;
+  }
+
+  div.show-details-container {
+    width: 300px;
+
+    img {
+      width: 20%;
+    }
+  }
+
+  div.show-episodes-container {
+    width: 300px;
+
+    div.season-container {
+      margin: 20px 0;
+      background-color: lightgrey;
+
+      button.season-complete {
+        padding: 10px 20px;
+        width: 300px;
+        cursor: pointer;
+      }
+
+      h5.season-title {
+        font-size: 20px;
+        cursor: pointer;
+
+        &[watched="watched"] {
+          text-decoration: line-through;
+        }
+
+        &.active {
+          & + ul.episodes-container {
+            display: block;
+          }
+        }
+      }
+
+      ul.episodes-container {
+        display: none;
+
+        li.episode {
+          position: relative;
+          cursor: pointer;
+
+          &:hover {
+            p.episode-hover {
+              display: block;
+            }
+          }
+
+          &.watched {
+            text-decoration: line-through;
+          }
+
+          p.episode-hover {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            z-index: 99;
+            background-color: #e4e4b2;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
