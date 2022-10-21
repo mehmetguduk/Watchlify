@@ -1,0 +1,80 @@
+div.show-details-container {
+  display: flex;
+  width: 350px;
+
+  div.image-container {
+    width: 40%;
+    position: relative;
+
+    img.detail-image {
+      width: 100%;
+    }
+
+    div.detail-status {
+      height: 15px;
+      width: 15px;
+      border-radius: 5px;
+      position: absolute;
+      left: 3px;
+      top: 3px;
+
+      &.running {
+        background-color: green;
+      }
+
+      &.ended {
+        background-color: red;
+      }
+
+      &.unknown {
+        background-color: gray;
+      }
+
+      &:hover {
+        p.status-hover {
+          display: block;
+        }
+      }
+
+      p.status-hover {
+        display: none;
+        position: relative;
+
+        span.hover-text {
+          background-color: black;
+          color: white;
+          position: absolute;
+          top: 0px;
+          left: 18px;
+          padding: 3px 6px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  div.details-container {
+    div.progress-bar-container {
+      width: 100%;
+      background-color: #eeeeee;
+      border: 1px solid gray;
+      height: 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 1px;
+
+      div.progress {
+        height: 16px;
+        background-color: rgb(5, 141, 5);
+
+        span.progress-percent {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}

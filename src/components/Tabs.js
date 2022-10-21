@@ -1,3 +1,6 @@
+import React from 'react';
+import './Tabs.scss'
+
 export default function Tabs(props) {
 
   function handleTabClick(event) {

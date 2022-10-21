@@ -2,6 +2,7 @@ import React from 'react'
 import ShowDetails from './ShowDetails'
 import ShowEpisodes from './ShowEpisodes'
 import setList from "../../utils/database/setList"
+import './Show.scss'
 
 export default function Show(props) {
 

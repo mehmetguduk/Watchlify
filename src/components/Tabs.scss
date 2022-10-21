@@ -1,0 +1,21 @@
+div.tabs-container {
+  ul.tab-list {
+    display: flex;
+    list-style-type: none;
+    user-select: none;
+
+    li.tab {
+      background-color: #add8e6;
+      padding: 10px 20px;
+      width: 175px;
+      text-align: center;
+      cursor: pointer;
+      border-top: 5px solid #add8e6;
+
+      &.active {
+        border-top: 5px solid #add8e6;
+        background-color: #89cde4;
+      }
+    }
+  }
+}

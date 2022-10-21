@@ -1,4 +1,5 @@
 import React from 'react'
+import './ShowDetails.scss'
 
 export default function ShowDetails(props) {
   return (

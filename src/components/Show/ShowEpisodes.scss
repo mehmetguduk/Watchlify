@@ -1,0 +1,60 @@
+div.show-episodes-container {
+  width: 350px;
+
+  div.season-container {
+    margin: 20px 0;
+    background-color: lightgrey;
+
+    span.season-complete {
+      display: block;
+      background-color: white;
+      border: 1px solid black;
+      padding: 5px 10px;
+      width: 350px;
+      cursor: pointer;
+    }
+
+    h5.season-title {
+      font-size: 20px;
+      cursor: pointer;
+
+      &[watched="watched"] {
+        text-decoration: line-through;
+      }
+
+      &.active {
+        & + ul.episodes-container {
+          display: block;
+        }
+      }
+    }
+
+    ul.episodes-container {
+      display: none;
+
+      li.episode {
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+          p.episode-hover {
+            display: block;
+          }
+        }
+
+        &.watched {
+          text-decoration: line-through;
+        }
+
+        p.episode-hover {
+          position: absolute;
+          top: 20px;
+          left: 0;
+          z-index: 99;
+          background-color: #e4e4b2;
+          display: none;
+        }
+      }
+    }
+  }
+}

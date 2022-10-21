@@ -1,5 +1,6 @@
 import React from "react"
 import Show from "./Show/Show";
+import './MyShows.scss'
 
 export default function MyShows(props) {
 

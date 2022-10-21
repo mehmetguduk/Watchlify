@@ -1,5 +1,6 @@
 import React from 'react'
 import setList from "../../utils/database/setList"
+import './ShowEpisodes.scss'
 
 export default function ShowEpisodes(props) {
 

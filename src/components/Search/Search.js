@@ -1,6 +1,7 @@
 import React from "react"
 import getSearch from "../../utils/api/getSearch"
 import SearchResults from "./SearchResults"
+import './Search.scss'
 
 export default function Search(props) {
   const [searchValue, setSearchValue] = React.useState("")

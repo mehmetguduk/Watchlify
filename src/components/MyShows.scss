@@ -1,0 +1,28 @@
+div.myshows-container {
+  width: 350px;
+
+  ul.shows-container {
+    user-select: none;
+    list-style-type: none;
+
+    li.show {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(182, 187, 189);
+      padding: 10px;
+      width: 175px;
+      border: 1px solid #00000028;
+      cursor: pointer;
+
+      img.show-image {
+        width: 50%;
+        -webkit-user-drag: none;
+      }
+      h5.show-name {
+        font-size: 15px;
+      }
+    }
+  }
+}
