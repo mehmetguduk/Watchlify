@@ -19,21 +19,23 @@ function App() {
         setDetailedShow={setDetailedShow}
       />
 
-      {currentTab === 'Search' &&
-        <Search
-          watchList={watchList}
-          setWatchList={setWatchList}
-        />
-      }
+      <div className='main-content'>
+        {currentTab === 'Search' &&
+          <Search
+            watchList={watchList}
+            setWatchList={setWatchList}
+          />
+        }
 
-      {currentTab === 'My Shows' &&
-        <MyShows
-          watchList={watchList}
-          setWatchList={setWatchList}
-          detailedShow={detailedShow}
-          setDetailedShow={setDetailedShow}
-        />
-      }
+        {currentTab === 'My Shows' &&
+          <MyShows
+            watchList={watchList}
+            setWatchList={setWatchList}
+            detailedShow={detailedShow}
+            setDetailedShow={setDetailedShow}
+          />
+        }
+      </div>
     </div>
   );
 }

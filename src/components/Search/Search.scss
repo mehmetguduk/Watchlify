@@ -1,16 +1,60 @@
 div.search-container {
-  width: 350px;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  user-select: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   form.search-form {
+    margin-bottom: 15px;
+    display: flex;
+
     input.search-input {
-      width: 255px;
-      padding: 5px 10px;
+      width: 75%;
+      padding: 10px 10px;
+      background-color: #dbdbdb;
+      border: none;
+      border-radius: 2px;
+      color: #343436;
+      border: 1px solid #3434361c;
+      transition: 0.1s border;
+      font-size: 14px;
+      font-weight: 400;
+      box-shadow: 1.5px 1.5px 1px 0px rgba(0, 0, 0, 0.3);
+
+      &:focus {
+        border: 1px solid #3434365d;
+        outline: none;
+      }
     }
+
     button.search-button {
-      width: 95px;
+      width: 25%;
       padding: 5px 10px;
+      margin: 0 5px 0 5px;
+      background-color: #dbdbdb;
+      border-radius: 2px;
+      border: none;
+      color: #343436;
+      border: 1px solid #3434361c;
+      cursor: pointer;
+      transition: 0.1s border;
+      font-size: 14px;
+      font-weight: 400;
+      box-shadow: 1.5px 1.5px 1px 0px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        border: 1px solid #3434365d;
+      }
+      &:active {
+        border: 1px solid #3434369c;
+      }
     }
   }
+
   ul.search-results {
     user-select: none;
     list-style-type: none;
@@ -20,22 +64,45 @@ div.search-container {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #e6e6de;
-      padding: 10px;
-      width: 175px;
-      border: 1px solid #00000028;
+      background-color: #dbdbdb;
+      width: 33%;
+      padding: 4px;
+      border: 1px solid #ffffff;
+      position: relative;
+      border-radius: 5px;
       cursor: pointer;
 
       &.inlist {
-        background-color: #e4e4b2;
+        background-color: #227722;
+      }
+
+      &:hover {
+        h5.result-name {
+          display: block;
+        }
       }
 
       img.result-image {
-        width: 50%;
+        border-radius: 5px;
+        width: 100%;
         -webkit-user-drag: none;
       }
+
       h5.result-name {
-        font-size: 15px;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #343436;
+        opacity: 0.95;
+        color: white;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 3px;
+        word-wrap: break-word;
+        width: 100%;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
       }
     }
   }

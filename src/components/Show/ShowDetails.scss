@@ -1,13 +1,18 @@
 div.show-details-container {
   display: flex;
-  width: 350px;
+  margin: 10px 0;
 
   div.image-container {
     width: 40%;
     position: relative;
+    margin-right: 10px;
 
     img.detail-image {
       width: 100%;
+      height: 100%;
+      border-radius: 2px;
+      -webkit-user-drag: none;
+      box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.5);
     }
 
     div.detail-status {
@@ -41,8 +46,10 @@ div.show-details-container {
         position: relative;
 
         span.hover-text {
-          background-color: black;
-          color: white;
+          background-color: #343436;
+          color: #ffffff;
+          font-weight: 400;
+          font-size: 13px;
           position: absolute;
           top: 0px;
           left: 18px;
@@ -54,25 +61,99 @@ div.show-details-container {
   }
 
   div.details-container {
-    div.progress-bar-container {
-      width: 100%;
-      background-color: #eeeeee;
-      border: 1px solid gray;
-      height: 20px;
-      position: relative;
+    width: 60%;
+    font-weight: 400;
+    font-size: 15px;
+    position: relative;
+
+    div.detail-container-1 {
       display: flex;
-      align-items: center;
-      padding: 0 1px;
+      margin-bottom: 2px;
 
-      div.progress {
-        height: 16px;
-        background-color: rgb(5, 141, 5);
+      h5.show-name {
+        width: 90%;
+        font-size: 18px;
+        font-weight: 500;
+      }
 
-        span.progress-percent {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+      a.show-imdb {
+        opacity: 0.7;
+        width: 10%;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+
+    div.detail-container-2 {
+      display: flex;
+      opacity: 0.7;
+      margin-bottom: 2px;
+
+      p.show-network {
+        margin-right: 5px;
+      }
+      p.show-year {
+      }
+    }
+
+    div.detail-container-3 {
+      p.show-genres {
+        opacity: 0.7;
+        margin-bottom: 2px;
+      }
+      p.show-average-runtime {
+        opacity: 0.7;
+        margin-bottom: 2px;
+      }
+      span.show-delete {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.8;
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+
+    div.detail-container-4 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      p.show-watched {
+        opacity: 0.7;
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+
+      div.progress-bar-container {
+        box-shadow: 1.5px 1.5px 1px 0px rgba(0, 0, 0, 0.5);
+        width: 99%;
+        background-color: #eeeeee;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        opacity: 0.7;
+        border-radius: 1px;
+        height: 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 1px;
+
+        div.progress {
+          height: 16px;
+          background-color: #058d05;
+
+          span.progress-percent {
+            position: absolute;
+            font-size: 13px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
         }
       }
     }

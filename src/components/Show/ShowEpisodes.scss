@@ -1,25 +1,66 @@
 div.show-episodes-container {
-  width: 350px;
-
   div.season-container {
-    margin: 20px 0;
-    background-color: lightgrey;
+    margin: 10px 0;
+    background-color: #d3d3d3;
+    border-radius: 1px;
+    padding: 5px 10px;
+    color: #000000;
+    width: 99%;
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.4);
 
-    span.season-complete {
-      display: block;
-      background-color: white;
-      border: 1px solid black;
-      padding: 5px 10px;
-      width: 350px;
-      cursor: pointer;
-    }
-
-    h5.season-title {
-      font-size: 20px;
+    div.season-title-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       cursor: pointer;
 
-      &[watched="watched"] {
-        text-decoration: line-through;
+      &.active {
+        h5.season-title {
+          svg.title-arrow {
+            transform: rotate(0deg);
+          }
+        }
+      }
+
+      h5.season-title {
+        font-size: 18px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+
+        svg.title-arrow {
+          font-size: 18px;
+          transform: rotate(-90deg);
+          margin-right: 5px;
+          transition: 0.1s transform;
+          opacity: 0.6;
+        }
+
+        &.watched {
+          text-decoration: line-through;
+        }
+
+        &.watched + span.season-complete {
+          background-color: #227722;
+          color: #ffffff;
+        }
+      }
+
+      span.season-complete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-weight: 400;
+        font-size: 20px;
+        background-color: white;
+        box-shadow: 1.5px 1.5px 1px 0px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: 0.1s color, 0.1s background-color;
+
+        &:hover {
+          color: #227722;
+        }
       }
 
       &.active {
@@ -31,10 +72,21 @@ div.show-episodes-container {
 
     ul.episodes-container {
       display: none;
+      margin: 5px 0;
 
       li.episode {
         position: relative;
         cursor: pointer;
+        font-weight: 400;
+        font-size: 15px;
+        margin: 2px 0;
+
+        span.episode-number {
+          display: inline-block;
+          opacity: 0.6;
+          width: 25px;
+          font-weight: 500;
+        }
 
         &:hover {
           p.episode-hover {
@@ -44,10 +96,16 @@ div.show-episodes-container {
 
         &.watched {
           text-decoration: line-through;
+          span.episode-number {
+            opacity: 1;
+            color: #227722;
+          }
         }
 
         p.episode-hover {
           position: absolute;
+          border-radius: 1px;
+          padding: 5px 10px;
           top: 20px;
           left: 0;
           z-index: 99;

@@ -1,6 +1,10 @@
 import React from 'react'
 import setList from "../../utils/database/setList"
 import './ShowEpisodes.scss'
+import { TiTick } from "react-icons/ti";
+import { IoIosArrowDown } from "react-icons/io";
+
+
 
 export default function ShowEpisodes(props) {
 
@@ -50,7 +54,13 @@ export default function ShowEpisodes(props) {
   }
 
   function handleSeasonClick(event) {
-    event.target.classList.toggle("active")
+    console.log()
+    if (event.target.nodeName !== 'svg' && event.target.nodeName !== 'path') {
+      event.target.closest('div.season-title-container').classList.toggle("active")
+    }
+    else if (event.target.closest('svg.title-arrow') !== null) {
+      event.target.closest('div.season-title-container').classList.toggle("active")
+    }
   }
 
   function handleEpisodeClick(event) {
@@ -101,20 +111,20 @@ export default function ShowEpisodes(props) {
       {props.detailedShow.seasons.map((season, seasonIndex) => {
         return (
           <div className={`season-container season-${seasonIndex + 1}`} >
-            <span
-              className='season-complete'
-              onClick={() => {
-                handleCompleteSeason(seasonIndex)
-              }}>
-              Complete Season
-            </span>
-            <h5
-              className='season-title'
-              onClick={handleSeasonClick}
-              watched={isAllSeasonWatched(seasonIndex) && "watched"}
-            >
-              {`Season ${seasonIndex + 1}`}
-            </h5>
+            <div className='season-title-container'
+              onClick={handleSeasonClick}>
+              <h5 className={isAllSeasonWatched(seasonIndex) ? 'season-title watched' : 'season-title'}>
+                <IoIosArrowDown className='title-arrow' />
+                {`Season ${seasonIndex + 1}`}
+              </h5>
+              <span
+                className='season-complete'
+                onClick={() => {
+                  handleCompleteSeason(seasonIndex)
+                }}>
+                <TiTick />
+              </span>
+            </div>
             <ul className='episodes-container'>
               {
                 season.map((episode, episodeIndex) => {
@@ -125,10 +135,13 @@ export default function ShowEpisodes(props) {
                       key={`S${seasonIndex + 1}E${episodeIndex + 1}`}
                       onClick={handleEpisodeClick}
                     >
-                      {episodeIndex + 1}. {episode.name}
-                      <p className='episode-hover'>
-                        {props.detailedShow.seasons[seasonIndex][episodeIndex].summary && props.detailedShow.seasons[seasonIndex][episodeIndex].summary.split('>')[1].split('<')[0]}
-                      </p>
+                      <span className='episode-number'>{episodeIndex + 1}. </span>
+                      {episode.name}
+                      {
+                        props.detailedShow.seasons[seasonIndex][episodeIndex].summary && <p className='episode-hover'>
+                          {props.detailedShow.seasons[seasonIndex][episodeIndex].summary.split('>')[1].split('<')[0]}
+                        </p>
+                      }
                     </li>
                   )
                 })
