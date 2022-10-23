@@ -15,7 +15,6 @@ function App() {
       <Tabs
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
-        detailedShow={detailedShow}
         setDetailedShow={setDetailedShow}
       />
 

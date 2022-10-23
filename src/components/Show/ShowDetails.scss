@@ -83,6 +83,15 @@ div.show-details-container {
         color: black;
         font-size: 20px;
         cursor: pointer;
+        transition: 0.1s opacity;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &:active {
+          opacity: 0.7;
+        }
       }
     }
 
@@ -112,9 +121,20 @@ div.show-details-container {
         align-items: center;
         justify-content: center;
         opacity: 0.8;
-        color: red;
+        color: #ff0000;
         font-size: 20px;
         cursor: pointer;
+        transition: 0.1s color, 0.1s transform;
+
+        &:hover {
+          transform: rotate(10deg);
+          color: #343436;
+        }
+
+        &:active {
+          color: #ff0000;
+          transform: rotate(0deg);
+        }
       }
     }
 
@@ -146,6 +166,7 @@ div.show-details-container {
         div.progress {
           height: 16px;
           background-color: #058d05;
+          transition: 0.2s width;
 
           span.progress-percent {
             position: absolute;

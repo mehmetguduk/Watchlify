@@ -3,8 +3,7 @@ import setList from "../../utils/database/setList"
 import './ShowEpisodes.scss'
 import { TiTick } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
-
-
+import placeholderEpisode from '../../images/placeholderEpisode.jpg'
 
 export default function ShowEpisodes(props) {
 
@@ -54,7 +53,6 @@ export default function ShowEpisodes(props) {
   }
 
   function handleSeasonClick(event) {
-    console.log()
     if (event.target.nodeName !== 'svg' && event.target.nodeName !== 'path') {
       event.target.closest('div.season-title-container').classList.toggle("active")
     }
@@ -64,37 +62,39 @@ export default function ShowEpisodes(props) {
   }
 
   function handleEpisodeClick(event) {
-    event.target.classList.toggle('watched')
-    let showRelated = props.watchList.filter(show => show.id === props.detailedShow.id)[0]
-    let isEpisodeExists = showRelated.watched.includes(event.target.id)
+    if (event.target.closest('div.episode-hover') === null) {
+      let targetId = event.target.closest('li.episode').id
+      let showRelated = props.watchList.filter(show => show.id === props.detailedShow.id)[0]
+      let isEpisodeExists = showRelated.watched.includes(targetId)
 
-    if (isEpisodeExists) {
-      const newWatchList = props.watchList.map(show => {
-        if (show === showRelated) {
-          const updatedShow = {
-            ...show,
-            watched: show.watched.filter(episode => episode !== event.target.id)
+      if (isEpisodeExists) {
+        const newWatchList = props.watchList.map(show => {
+          if (show === showRelated) {
+            const updatedShow = {
+              ...show,
+              watched: show.watched.filter(episode => episode !== targetId)
+            }
+            return updatedShow
           }
-          return updatedShow
-        }
-        return show
-      })
-      setList(newWatchList)
-      props.setWatchList(newWatchList)
-    }
-    else {
-      const newWatchList = props.watchList.map(show => {
-        if (show === showRelated) {
-          const updatedShow = {
-            ...show,
-            watched: [...show.watched, event.target.id]
+          return show
+        })
+        setList(newWatchList)
+        props.setWatchList(newWatchList)
+      }
+      else {
+        const newWatchList = props.watchList.map(show => {
+          if (show === showRelated) {
+            const updatedShow = {
+              ...show,
+              watched: [...show.watched, targetId]
+            }
+            return updatedShow
           }
-          return updatedShow
-        }
-        return show
-      })
-      setList(newWatchList)
-      props.setWatchList(newWatchList)
+          return show
+        })
+        setList(newWatchList)
+        props.setWatchList(newWatchList)
+      }
     }
   }
 
@@ -128,6 +128,7 @@ export default function ShowEpisodes(props) {
             <ul className='episodes-container'>
               {
                 season.map((episode, episodeIndex) => {
+
                   return (
                     <li
                       className={props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.includes(`S${seasonIndex + 1}E${episodeIndex + 1}`) ? `episode ${episodeIndex + 1} watched` : `episode ${episodeIndex + 1}`}
@@ -135,12 +136,46 @@ export default function ShowEpisodes(props) {
                       key={`S${seasonIndex + 1}E${episodeIndex + 1}`}
                       onClick={handleEpisodeClick}
                     >
-                      <span className='episode-number'>{episodeIndex + 1}. </span>
-                      {episode.name}
+
+                      <div className='episode-title-container'>
+                        <span className='episode-number'>
+                          {episodeIndex + 1}.
+                        </span>
+                        <span className='episode-title'>
+                          {episode.name}
+                        </span>
+                      </div>
                       {
-                        props.detailedShow.seasons[seasonIndex][episodeIndex].summary && <p className='episode-hover'>
-                          {props.detailedShow.seasons[seasonIndex][episodeIndex].summary.split('>')[1].split('<')[0]}
-                        </p>
+                        props.detailedShow.seasons[seasonIndex][episodeIndex].summary &&
+                        <div className='episode-hover'>
+
+                          <img class='hover-image' src={props.detailedShow.seasons[seasonIndex][episodeIndex].image ? props.detailedShow.seasons[seasonIndex][episodeIndex].image.medium : placeholderEpisode} alt='Episode Cover' />
+
+                          <div className='hover-title-container'>
+                            <h5 className='title'>
+                              {`📼 S${seasonIndex + 1} E${episodeIndex + 1}`}
+                            </h5>
+                            <span className='date'>{
+                              ` 
+                              (
+                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[2]}
+
+                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+                              ][Number(props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[1]) - 1]}
+                              
+                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[0]}
+
+                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airtime && props.detailedShow.seasons[seasonIndex][episodeIndex].airtime}
+                              )
+                              `
+                            }
+                            </span>
+                          </div>
+                          <p className='hover-description'>
+                            {props.detailedShow.seasons[seasonIndex][episodeIndex].summary.split('>')[1].split('<')[0]}
+                          </p>
+                        </div>
                       }
                     </li>
                   )

@@ -76,41 +76,82 @@ div.show-episodes-container {
 
       li.episode {
         position: relative;
-        cursor: pointer;
         font-weight: 400;
         font-size: 15px;
-        margin: 2px 0;
-
-        span.episode-number {
-          display: inline-block;
-          opacity: 0.6;
-          width: 25px;
-          font-weight: 500;
-        }
+        padding: 3px 0;
+        cursor: pointer;
 
         &:hover {
-          p.episode-hover {
+          span.episode-title {
+            text-decoration: underline;
+          }
+          div.episode-hover {
             display: block;
           }
         }
 
         &.watched {
-          text-decoration: line-through;
+          span.episode-title {
+            text-decoration: line-through;
+          }
+
           span.episode-number {
             opacity: 1;
             color: #227722;
           }
         }
 
-        p.episode-hover {
+        div.episode-title-container {
+          span.episode-number {
+            display: inline-block;
+            opacity: 0.6;
+            width: 25px;
+            font-weight: 500F;
+          }
+          span.episode-title {
+          }
+        }
+
+        div.episode-hover {
+          display: none;
           position: absolute;
           border-radius: 1px;
-          padding: 5px 10px;
-          top: 20px;
-          left: 0;
+          padding: 10px;
+          top: 22px;
+          left: 50%;
           z-index: 99;
           background-color: #e4e4b2;
-          display: none;
+          transform: translate(-50%, 0);
+          width: 100%;
+          height: 100px;
+          overflow: auto;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          div.hover-title-container {
+            display: flex;
+            align-items: center;
+
+            h5.title {
+              font-weight: 500;
+              font-size: 15px;
+              margin-bottom: 3px;
+            }
+            span.date {
+              margin-left: 5px;
+              opacity: 0.7;
+            }
+          }
+
+          p.hover-description {
+          }
+
+          img.hover-image {
+            -webkit-user-drag: none;
+            width: 100%;
+          }
         }
       }
     }

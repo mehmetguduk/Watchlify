@@ -1,6 +1,7 @@
 import React from "react"
 import Show from "./Show/Show";
 import './MyShows.scss'
+import placeholder from "../images/placeholder.jpg"
 
 export default function MyShows(props) {
 
@@ -20,7 +21,7 @@ export default function MyShows(props) {
             {props.watchList.map(show => {
               let showId = show.id ? show.id : 'Unknown';
               let showName = show.name ? show.name : 'Unknown';
-              let showImage = show.image ? show.image.medium : 'https://via.placeholder.com/210x295';
+              let showImage = show.image ? show.image.medium : placeholder;
               return (
                 <li
                   className="show"

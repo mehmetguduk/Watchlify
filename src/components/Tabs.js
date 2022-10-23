@@ -6,6 +6,7 @@ export default function Tabs(props) {
   function handleTabClick(event) {
     if (event.target.textContent !== props.currentTab) {
       props.setCurrentTab(event.target.textContent);
+      props.setDetailedShow(false)
     }
     else if (event.target.textContent === 'My Shows') {
       props.setDetailedShow(false)

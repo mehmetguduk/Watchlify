@@ -3,6 +3,7 @@ import getSearchById from '../../utils/api/getSearchById'
 import getEpisodes from '../../utils/api/getEpisodes'
 import { groupBy } from 'lodash';
 import setList from '../../utils/database/setList';
+import placeholder from '../../images/placeholder.jpg'
 
 export default function SearchResults(props) {
 
@@ -22,6 +23,7 @@ export default function SearchResults(props) {
     else {
       getSearchById(clickedShowId).then(response => {
         if (response.id) {
+          console.log("adding to watchlist", response)
           props.setWatchList(prevWatchList => {
             prevWatchList.splice(0, 0, response)
             setList(prevWatchList)
@@ -30,18 +32,21 @@ export default function SearchResults(props) {
         }
       }).then(
         getEpisodes(clickedShowId).then(response => {
-          let seasons = []
-          Object.keys(groupBy(response, "season")).forEach(season => {
-            const episodes = groupBy(response, "season")[season]
-            seasons.push(episodes)
-          })
-          props.setWatchList(prevWatchList => {
-            prevWatchList[0].seasons = seasons
-            prevWatchList[0].watched = []
-            prevWatchList[0].episodeCount = response.length
-            setList(prevWatchList)
-            return prevWatchList
-          })
+          if (response) {
+            let seasons = []
+            Object.keys(groupBy(response, "season")).forEach(season => {
+              const episodes = groupBy(response, "season")[season]
+              seasons.push(episodes)
+            })
+            props.setWatchList(prevWatchList => {
+              console.log("line 40", prevWatchList)
+              prevWatchList[0].seasons = seasons
+              prevWatchList[0].watched = []
+              prevWatchList[0].episodeCount = response.length
+              setList(prevWatchList)
+              return prevWatchList
+            })
+          }
         })
       )
     }
@@ -53,7 +58,7 @@ export default function SearchResults(props) {
         props.searchResults.map(result => {
           let resultId = result.show.id ? result.show.id : 'Unknown';
           let resultName = result.show.name ? result.show.name : 'Unknown';
-          let resultImage = result.show.image ? result.show.image.medium : 'https://via.placeholder.com/210x295';
+          let resultImage = result.show.image ? result.show.image.medium : placeholder;
           let resultClass = props.watchList.some(show => show.id === Number(resultId)) ? "result inlist" : "result"
 
           return (

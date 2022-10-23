@@ -3,6 +3,7 @@ import './ShowDetails.scss'
 import setList from '../../utils/database/setList';
 import { HiExternalLink } from "react-icons/hi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import placeholder from '../../images/placeholder.jpg'
 
 export default function ShowDetails(props) {
   function handleShowDelete(event) {
@@ -19,7 +20,7 @@ export default function ShowDetails(props) {
     <div className='show-details-container'>
 
       <div className='image-container'>
-        <img className='detail-image' src={props.detailedShow.image ? props.detailedShow.image.medium : 'https://via.placeholder.com/210x295'} alt='Show Cover' />
+        <img className='detail-image' src={props.detailedShow.image ? props.detailedShow.image.medium : placeholder} alt='Show Cover' />
         {
           props.detailedShow.status ?
             <div className={`detail-status ${props.detailedShow.status.toLowerCase()}`}>
@@ -50,7 +51,7 @@ export default function ShowDetails(props) {
         <div className='detail-container-2'>
           <p className='show-network'>{props.detailedShow.network !== null || props.detailedShow.webChannel !== null ? props.detailedShow.network ? props.detailedShow.network.name : props.detailedShow.webChannel.name : 'Unknown'}</p>
 
-          <p className='show-year'>{props.detailedShow.premiered ? `(${props.detailedShow.premiered.split("-")[0]})` : 'Unknown'}</p>
+          <p className='show-year'>{props.detailedShow.premiered ? `(${props.detailedShow.premiered.split("-")[0]})` : '(Unknown)'}</p>
         </div>
 
         <div className='detail-container-3'>
@@ -58,7 +59,7 @@ export default function ShowDetails(props) {
             return (`${genre}${props.detailedShow.genres.length - 1 !== index ? ", " : ""}`)
           }) : 'Unknown'}</p>
 
-          <p className='show-average-runtime'>{props.detailedShow.averageRuntime ? props.detailedShow.averageRuntime : 'Unknown'} mins</p>
+          <p className='show-average-runtime'>{props.detailedShow.averageRuntime ? `${props.detailedShow.averageRuntime} mins` : 'Unknown'}</p>
           <span
             className='show-delete'
             onClick={handleShowDelete}>
@@ -67,7 +68,7 @@ export default function ShowDetails(props) {
         </div>
 
         <div className='detail-container-4'>
-          <p className='show-watched'>Watched {props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched !== undefined && props.detailedShow.episodeCount !== undefined ? `${props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length} of ${props.detailedShow.episodeCount} episode${props.detailedShow.episodeCount > 1 && 's'}` : 'Unknown'}</p>
+          <p className='show-watched'>Watched {props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched !== undefined && props.detailedShow.episodeCount !== undefined ? `${props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length} of ${props.detailedShow.episodeCount} episode${props.detailedShow.episodeCount > 1 ? 's' : ''}` : 'Unknown'}</p>
           <div className='progress-bar-container'>
             {
               props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched !== undefined && props.detailedShow.episodeCount !== undefined &&
