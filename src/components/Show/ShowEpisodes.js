@@ -3,6 +3,7 @@ import setList from "../../utils/database/setList"
 import './ShowEpisodes.scss'
 import { TiTick } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 import placeholderEpisode from '../../images/placeholderEpisode.jpg'
 
 export default function ShowEpisodes(props) {
@@ -138,45 +139,52 @@ export default function ShowEpisodes(props) {
                     >
 
                       <div className='episode-title-container'>
-                        <span className='episode-number'>
-                          {episodeIndex + 1}.
-                        </span>
-                        <span className='episode-title'>
-                          {episode.name}
-                        </span>
-                      </div>
-                      {
-                        props.detailedShow.seasons[seasonIndex][episodeIndex].summary &&
-                        <div className='episode-hover'>
+                        <div className='title-container'>
+                          <span className='episode-number'>
+                            {episodeIndex + 1}.
+                          </span>
+                          <span className='episode-title'>
+                            {episode.name}
+                          </span>
+                        </div>
+                        {
+                          props.detailedShow.seasons[seasonIndex][episodeIndex].summary &&
+                          <div className='episode-hover'>
+                            <span className='hover-info-icon'>
+                              <BsFillInfoCircleFill />
+                            </span>
+                            <div className='hover-content-container'>
+                              <img class='hover-image' src={props.detailedShow.seasons[seasonIndex][episodeIndex].image ? props.detailedShow.seasons[seasonIndex][episodeIndex].image.medium : placeholderEpisode} alt='Episode Cover' />
 
-                          <img class='hover-image' src={props.detailedShow.seasons[seasonIndex][episodeIndex].image ? props.detailedShow.seasons[seasonIndex][episodeIndex].image.medium : placeholderEpisode} alt='Episode Cover' />
-
-                          <div className='hover-title-container'>
-                            <h5 className='title'>
-                              {`📼 S${seasonIndex + 1} E${episodeIndex + 1}`}
-                            </h5>
-                            <span className='date'>{
-                              ` 
+                              <div className='hover-title-container'>
+                                <h5 className='title'>
+                                  {`📼 S${seasonIndex + 1} E${episodeIndex + 1}`}
+                                </h5>
+                                <span className='date'>{
+                                  ` 
                               (
                               ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[2]}
 
                               ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-                              ][Number(props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[1]) - 1]}
+                                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+                                  ][Number(props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[1]) - 1]}
                               
                               ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[0]}
 
                               ${props.detailedShow.seasons[seasonIndex][episodeIndex].airtime && props.detailedShow.seasons[seasonIndex][episodeIndex].airtime}
                               )
                               `
-                            }
-                            </span>
+                                }
+                                </span>
+                              </div>
+                              <p className='hover-description'>
+                                {props.detailedShow.seasons[seasonIndex][episodeIndex].summary.replaceAll('<br />', ' ').replaceAll(/<.*?>/g, '')}
+                              </p>
+                            </div>
                           </div>
-                          <p className='hover-description'>
-                            {props.detailedShow.seasons[seasonIndex][episodeIndex].summary.split('>')[1].split('<')[0]}
-                          </p>
-                        </div>
-                      }
+                        }
+                      </div>
+
                     </li>
                   )
                 })
