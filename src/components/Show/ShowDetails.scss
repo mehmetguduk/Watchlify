@@ -1,27 +1,27 @@
 div.show-details-container {
   display: flex;
   margin: 10px 0;
-
+  
   div.image-container {
-    width: 40%;
     position: relative;
+    width: 40%;
     margin-right: 10px;
 
     img.detail-image {
+      -webkit-user-drag: none;
       width: 100%;
       height: 100%;
       border-radius: 2px;
-      -webkit-user-drag: none;
       box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.4);
     }
 
     div.detail-status {
-      height: 15px;
-      width: 15px;
-      border-radius: 5px;
       position: absolute;
-      left: 3px;
       top: 3px;
+      left: 3px;
+      width: 15px;
+      height: 15px;
+      border-radius: 5px;
 
       &.running {
         background-color: #227722;
@@ -46,15 +46,15 @@ div.show-details-container {
         position: relative;
 
         span.hover-text {
-          background-color: #343436;
-          color: #ffffff;
-          font-weight: 400;
-          font-size: 13px;
           position: absolute;
           top: 0px;
           left: 18px;
           padding: 3px 6px;
+          background-color: #343436;
           border-radius: 5px;
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 400;
         }
       }
     }
@@ -69,19 +69,19 @@ div.show-details-container {
       margin-bottom: 2px;
 
       h5.show-name {
+        color: #000000;
         font-size: 18px;
         font-weight: 500;
-        color: #000000;
       }
 
       a.show-imdb {
+        cursor: pointer;
         opacity: 0.7;
         width: 10%;
-        text-decoration: none;
         color: #000000;
         font-size: 20px;
-        cursor: pointer;
         transition: 0.1s opacity;
+        text-decoration: none;
 
         &:hover {
           opacity: 1;
@@ -98,9 +98,9 @@ div.show-details-container {
 
       p.show-network {
         opacity: 0.7;
-        font-weight: 400;
-        font-size: 15px;
         color: #000000;
+        font-size: 15px;
+        font-weight: 400;
 
         span.show-year {
           margin-left: 4px;
@@ -109,9 +109,9 @@ div.show-details-container {
     }
 
     div.detail-container-3 {
-      font-weight: 400;
-      font-size: 15px;
       color: #000000;
+      font-size: 15px;
+      font-weight: 400;
 
       p.show-genres {
         opacity: 0.7;
@@ -122,13 +122,13 @@ div.show-details-container {
         margin-bottom: 3px;
       }
       span.show-delete {
+        cursor: pointer;
         display: inline-flex;
+        opacity: 0.8;
         align-items: center;
         justify-content: center;
-        opacity: 0.8;
         color: #ff0000;
         font-size: 20px;
-        cursor: pointer;
         transition: 0.1s color, 0.1s transform;
 
         &:hover {
@@ -137,8 +137,8 @@ div.show-details-container {
         }
 
         &:active {
-          color: #ff0000;
           transform: rotate(0deg);
+          color: #ff0000;
         }
       }
     }

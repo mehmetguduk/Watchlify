@@ -9,21 +9,21 @@ div.myshows-container {
 
   ul.shows-container {
     user-select: none;
-    list-style-type: none;
     height: 100%;
+    list-style-type: none;
   
     li.show {
+      cursor: pointer;
       display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
+      position: relative;
       align-items: center;
-      background-color: #dbdbdb;
+      justify-content: center;
+      flex-direction: column;
       width: 33%;
       padding: 5px;
-      border: 1px solid white;
-      position: relative;
+      background-color: #dbdbdb;
+      border: 1px solid #ffffff;
       border-radius: 5px;
-      cursor: pointer;
 
       &:hover {
         h5.show-name {
@@ -32,26 +32,26 @@ div.myshows-container {
       }
 
       img.show-image {
-        border-radius: 5px;
-        width: 100%;
         -webkit-user-drag: none;
+        width: 100%;
+        border-radius: 5px;
       }
 
       h5.show-name {
         display: none;
         position: absolute;
+        opacity: 0.95;
         top: 0;
         left: 0;
+        width: 100%;
+        padding: 3px;
         background-color: #343436;
-        opacity: 0.95;
+        border-radius: 5px 5px 0 0;
         color: #ffffff;
         font-size: 14px;
         font-weight: 300;
-        padding: 3px;
-        word-wrap: break-word;
-        width: 100%;
         text-align: center;
-        border-radius: 5px 5px 0 0;
+        word-wrap: break-word;
       }
     }
   }
