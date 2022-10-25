@@ -12,7 +12,7 @@ div.show-details-container {
       height: 100%;
       border-radius: 2px;
       -webkit-user-drag: none;
-      box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.4);
     }
 
     div.detail-status {
@@ -24,15 +24,15 @@ div.show-details-container {
       top: 3px;
 
       &.running {
-        background-color: green;
+        background-color: #227722;
       }
 
       &.ended {
-        background-color: red;
+        background-color: #ff0000;
       }
 
       &.unknown {
-        background-color: gray;
+        background-color: #808080;
       }
 
       &:hover {
@@ -62,25 +62,23 @@ div.show-details-container {
 
   div.details-container {
     width: 60%;
-    font-weight: 400;
-    font-size: 15px;
-    position: relative;
 
     div.detail-container-1 {
       display: flex;
+      justify-content: space-between;
       margin-bottom: 2px;
 
       h5.show-name {
-        width: 90%;
         font-size: 18px;
         font-weight: 500;
+        color: #000000;
       }
 
       a.show-imdb {
         opacity: 0.7;
         width: 10%;
         text-decoration: none;
-        color: black;
+        color: #000000;
         font-size: 20px;
         cursor: pointer;
         transition: 0.1s opacity;
@@ -96,25 +94,32 @@ div.show-details-container {
     }
 
     div.detail-container-2 {
-      display: flex;
-      opacity: 0.7;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
 
       p.show-network {
-        margin-right: 5px;
-      }
-      p.show-year {
+        opacity: 0.7;
+        font-weight: 400;
+        font-size: 15px;
+        color: #000000;
+
+        span.show-year {
+          margin-left: 4px;
+        }
       }
     }
 
     div.detail-container-3 {
+      font-weight: 400;
+      font-size: 15px;
+      color: #000000;
+
       p.show-genres {
         opacity: 0.7;
-        margin-bottom: 2px;
+        margin-bottom: 3px;
       }
       p.show-average-runtime {
         opacity: 0.7;
-        margin-bottom: 2px;
+        margin-bottom: 3px;
       }
       span.show-delete {
         display: inline-flex;
@@ -134,47 +139,6 @@ div.show-details-container {
         &:active {
           color: #ff0000;
           transform: rotate(0deg);
-        }
-      }
-    }
-
-    div.detail-container-4 {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-
-      p.show-watched {
-        opacity: 0.7;
-        font-size: 12px;
-        margin-bottom: 5px;
-      }
-
-      div.progress-bar-container {
-        box-shadow: 1.5px 1.5px 1px 0px rgba(0, 0, 0, 0.5);
-        width: 99%;
-        background-color: #eeeeee;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-        opacity: 0.7;
-        border-radius: 1px;
-        height: 20px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding: 0 1px;
-
-        div.progress {
-          height: 16px;
-          background-color: #058d05;
-          transition: 0.2s width;
-
-          span.progress-percent {
-            position: absolute;
-            font-size: 13px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
         }
       }
     }

@@ -5,6 +5,7 @@ import { TiTick } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import placeholderEpisode from '../../images/placeholderEpisode.jpg'
+import Confetti from 'react-confetti'
 
 export default function ShowEpisodes(props) {
 
@@ -109,14 +110,21 @@ export default function ShowEpisodes(props) {
 
   return (
     <div className='show-episodes-container'>
+
+
       {props.detailedShow.seasons.map((season, seasonIndex) => {
         return (
           <div className={`season-container season-${seasonIndex + 1}`} >
+
+            {
+              Math.round((100 * props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length) / props.detailedShow.episodeCount) === 100 ? <Confetti width='350px' height='450px' gravity={0.02} numberOfPieces={80} opacity={0.8} /> : <Confetti width='350px' height='450px' gravity={0.02} numberOfPieces={0} opacity={0.8} />
+            }
+
             <div className='season-title-container'
               onClick={handleSeasonClick}>
               <h5 className={isAllSeasonWatched(seasonIndex) ? 'season-title watched' : 'season-title'}>
                 <IoIosArrowDown className='title-arrow' />
-                {`Season ${seasonIndex + 1}`}
+                <span className='title'>{`Season ${seasonIndex + 1}`}</span>
               </h5>
               <span
                 className='season-complete'
@@ -154,7 +162,7 @@ export default function ShowEpisodes(props) {
                               <BsFillInfoCircleFill />
                             </span>
                             <div className='hover-content-container'>
-                              <img class='hover-image' src={props.detailedShow.seasons[seasonIndex][episodeIndex].image ? props.detailedShow.seasons[seasonIndex][episodeIndex].image.medium : placeholderEpisode} alt='Episode Cover' />
+                              <img className='hover-image' src={props.detailedShow.seasons[seasonIndex][episodeIndex].image ? props.detailedShow.seasons[seasonIndex][episodeIndex].image.medium : placeholderEpisode} alt='Episode Cover' />
 
                               <div className='hover-title-container'>
                                 <h5 className='title'>
@@ -162,8 +170,7 @@ export default function ShowEpisodes(props) {
                                 </h5>
                                 <span className='date'>{
                                   ` 
-                              (
-                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[2]}
+                              (${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[2]}
 
                               ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -171,8 +178,7 @@ export default function ShowEpisodes(props) {
                               
                               ${props.detailedShow.seasons[seasonIndex][episodeIndex].airdate && props.detailedShow.seasons[seasonIndex][episodeIndex].airdate.split('-')[0]}
 
-                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airtime && props.detailedShow.seasons[seasonIndex][episodeIndex].airtime}
-                              )
+                              ${props.detailedShow.seasons[seasonIndex][episodeIndex].airtime && props.detailedShow.seasons[seasonIndex][episodeIndex].airtime})
                               `
                                 }
                                 </span>

@@ -1,0 +1,17 @@
+{
+  "name": "Watchlify",
+  "description": "Your watchlist app for shows",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Watchlify"
+  },
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png",
+    "192": "logo.png"
+  }
+}

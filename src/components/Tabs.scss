@@ -6,23 +6,23 @@ div.tabs-container {
 
     li.tab {
       z-index: 0;
-      background-color: #343436;
       color: #ffffff;
       padding: 10px 20px;
-      width: 175px;
+      width: 50%;
       text-align: center;
-      cursor: pointer;
-      border-radius: 5px 5px 0 0;
       font-weight: 500;
-      transition: 0.1s background-color;
+      font-size: 16px;
+      background-color: #343436;
+      transition: 0.2s background-color;
+      cursor: pointer;
 
       &.active {
-        background-color: #fff;
+        background-color: #ffffff;
         color: #343436;
       }
 
       &:not(.active):hover {
-        background-color: #3d3d3f;
+        background-color: #414141;
       }
     }
   }

@@ -49,9 +49,9 @@ export default function ShowDetails(props) {
         </div>
 
         <div className='detail-container-2'>
-          <p className='show-network'>{props.detailedShow.network !== null || props.detailedShow.webChannel !== null ? props.detailedShow.network ? props.detailedShow.network.name : props.detailedShow.webChannel.name : 'Unknown'}</p>
-
-          <p className='show-year'>{props.detailedShow.premiered ? `(${props.detailedShow.premiered.split("-")[0]})` : '(Unknown)'}</p>
+          <p className='show-network'>{props.detailedShow.network !== null || props.detailedShow.webChannel !== null ? props.detailedShow.network ? props.detailedShow.network.name : props.detailedShow.webChannel.name : 'Unknown'}
+            <span className='show-year'>{props.detailedShow.premiered ? `(${props.detailedShow.premiered.split("-")[0]})` : '(Unknown)'}</span>
+          </p>
         </div>
 
         <div className='detail-container-3'>
@@ -65,18 +65,6 @@ export default function ShowDetails(props) {
             onClick={handleShowDelete}>
             <RiDeleteBin5Fill />
           </span>
-        </div>
-
-        <div className='detail-container-4'>
-          <p className='show-watched'>Watched {props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched !== undefined && props.detailedShow.episodeCount !== undefined ? `${props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length} of ${props.detailedShow.episodeCount} episode${props.detailedShow.episodeCount > 1 ? 's' : ''}` : 'Unknown'}</p>
-          <div className='progress-bar-container'>
-            {
-              props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched !== undefined && props.detailedShow.episodeCount !== undefined &&
-              <div className='progress' style={{ width: `${Math.round((100 * props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length) / props.detailedShow.episodeCount)}%` }}>
-                <span className='progress-percent'>{`${Math.round((100 * props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length) / props.detailedShow.episodeCount)}%`}</span>
-              </div>
-            }
-          </div>
         </div>
 
       </div>

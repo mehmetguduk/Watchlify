@@ -21,33 +21,32 @@ export default function SearchResults(props) {
       })
     }
     else {
-      getSearchById(clickedShowId).then(response => {
-        console.log(response)
-        if (response.id) {
+      getSearchById(clickedShowId).then(showResponse => {
+        if (showResponse.id) {
           props.setWatchList(prevWatchList => {
-            prevWatchList.splice(0, 0, response)
+            getEpisodes(clickedShowId).then(episodesResponse => {
+              if (episodesResponse) {
+                let seasons = []
+                Object.keys(groupBy(episodesResponse, "season")).forEach(season => {
+                  const episodes = groupBy(episodesResponse, "season")[season]
+                  seasons.push(episodes)
+                })
+                showResponse.seasons = seasons
+                showResponse.watched = []
+                showResponse.episodeCount = episodesResponse.length
+              }
+              else {
+                showResponse.seasons = []
+                showResponse.watched = []
+                showResponse.episodeCount = 0
+              }
+            })
+            prevWatchList.splice(0, 0, showResponse)
             setList(prevWatchList)
             return prevWatchList
           })
         }
-      }).then(
-        getEpisodes(clickedShowId).then(response => {
-          if (response) {
-            let seasons = []
-            Object.keys(groupBy(response, "season")).forEach(season => {
-              const episodes = groupBy(response, "season")[season]
-              seasons.push(episodes)
-            })
-            props.setWatchList(prevWatchList => {
-              prevWatchList[0].seasons = seasons
-              prevWatchList[0].watched = []
-              prevWatchList[0].episodeCount = response.length
-              setList(prevWatchList)
-              return prevWatchList
-            })
-          }
-        })
-      )
+      })
     }
   }
 
