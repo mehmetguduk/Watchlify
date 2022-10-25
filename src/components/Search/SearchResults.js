@@ -22,8 +22,8 @@ export default function SearchResults(props) {
     }
     else {
       getSearchById(clickedShowId).then(response => {
+        console.log(response)
         if (response.id) {
-          console.log("adding to watchlist", response)
           props.setWatchList(prevWatchList => {
             prevWatchList.splice(0, 0, response)
             setList(prevWatchList)
@@ -39,7 +39,6 @@ export default function SearchResults(props) {
               seasons.push(episodes)
             })
             props.setWatchList(prevWatchList => {
-              console.log("line 40", prevWatchList)
               prevWatchList[0].seasons = seasons
               prevWatchList[0].watched = []
               prevWatchList[0].episodeCount = response.length
