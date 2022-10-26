@@ -37,13 +37,16 @@ div.show-details-container {
 
       &:hover {
         p.status-hover {
-          display: block;
+          visibility: visible;
+          opacity: 1;
         }
       }
 
       p.status-hover {
-        display: none;
         position: relative;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s visibility, 0.2s opacity;
 
         span.hover-text {
           position: absolute;
