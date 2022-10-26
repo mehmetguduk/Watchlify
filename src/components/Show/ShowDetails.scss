@@ -1,7 +1,7 @@
 div.show-details-container {
   display: flex;
   margin: 10px 0;
-  
+
   div.image-container {
     position: relative;
     width: 40%;
@@ -83,7 +83,7 @@ div.show-details-container {
         width: 10%;
         color: #000000;
         font-size: 20px;
-        transition: 0.1s opacity;
+        transition: 0.2s opacity;
         text-decoration: none;
 
         &:hover {
@@ -132,7 +132,7 @@ div.show-details-container {
         justify-content: center;
         color: #ff0000;
         font-size: 20px;
-        transition: 0.1s color, 0.1s transform;
+        transition: 0.2s color, 0.2s transform;
 
         &:hover {
           transform: rotate(10deg);

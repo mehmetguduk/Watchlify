@@ -2,6 +2,8 @@ import React from "react"
 import getSearch from "../../utils/api/getSearch"
 import SearchResults from "./SearchResults"
 import './Search.scss'
+import watchlifyTransparent from "../../images/watchlifyTransparent.png"
+
 
 export default function Search(props) {
   const [searchValue, setSearchValue] = React.useState("")
@@ -37,6 +39,14 @@ export default function Search(props) {
           Search
         </button>
       </form>
+
+      {
+        searchResults.length === 0 ?
+          <div className="no-search-container">
+            <img className="no-search-logo" src={watchlifyTransparent} alt='Watchlify Logo' />
+            <h5 className="no-search-text">Search for a show and add to your watchlist.</h5>
+          </div> : <></>
+      }
 
       <SearchResults
         searchResults={searchResults}

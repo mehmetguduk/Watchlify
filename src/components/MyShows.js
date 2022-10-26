@@ -2,6 +2,7 @@ import React from "react"
 import Show from "./Show/Show";
 import './MyShows.scss'
 import placeholder from "../images/placeholder.jpg"
+import watchlifyTransparent from "../images/watchlifyTransparent.png"
 
 export default function MyShows(props) {
 
@@ -15,7 +16,13 @@ export default function MyShows(props) {
 
   return (
     <div className="myshows-container">
-
+      {
+        props.watchList.length === 0 ?
+          <div className="no-show-container">
+            <img className="no-show-logo" src={watchlifyTransparent} alt='Watchlify Logo' />
+            <h5 className="no-show-text">There are no shows in your watch list</h5>
+          </div> : <></>
+      }
       {
         props.detailedShow === false ?
           <ul className="shows-container">

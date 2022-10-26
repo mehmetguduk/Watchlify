@@ -5,22 +5,22 @@ div.show-percent-container {
   div.progress-bar-container {
     display: flex;
     position: relative;
-    opacity: 0.7;
     align-items: center;
     width: 99.4%;
     height: 32px;
     padding: 1px;
     background-color: #eeeeee;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid #00000059;
     border-radius: 1px;
-    box-shadow: 1.5px 1.5px 1px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 1.5px 1.5px 1px 0px #00000059;
 
     div.progress {
       height: 100%;
-      background-color: #058d05;
+      background-color: #058d0580;
       transition: 0.2s width;
 
       span.progress-percent {
+        opacity: 0.7;
         position: absolute;
         top: 50%;
         left: 50%;

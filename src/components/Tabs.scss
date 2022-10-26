@@ -24,6 +24,10 @@ div.tabs-container {
       &:not(.active):hover {
         background-color: #414141;
       }
+
+      &.active:hover {
+        background-color: #dddddd;
+      }
     }
   }
 }

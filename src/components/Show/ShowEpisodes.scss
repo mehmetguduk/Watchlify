@@ -6,6 +6,11 @@ div.show-episodes-container {
     background-color: #d3d3d3;
     border-radius: 1px;
     box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.4);
+    transition: 0.2s background-color;
+
+    &:hover {
+      background-color: #dddddd;
+    }
 
     div.season-title-container {
       cursor: pointer;
@@ -31,7 +36,7 @@ div.show-episodes-container {
           margin-right: 5px;
           color: #000000;
           font-size: 18px;
-          transition: 0.1s transform;
+          transition: 0.2s transform;
         }
 
         span.title {
@@ -64,7 +69,7 @@ div.show-episodes-container {
         color: #000000;
         font-size: 20px;
         font-weight: 400;
-        transition: 0.1s color, 0.1s background-color;
+        transition: 0.2s color, 0.2s background-color;
 
         &:hover {
           color: #227722;
@@ -120,11 +125,13 @@ div.show-episodes-container {
               color: #000000;
               font-size: 15px;
               font-weight: 500;
+              transition: 0.2s opacity, 0.2s color;
             }
             span.episode-title {
               color: #000000;
               font-size: 15px;
               font-weight: 400;
+              transition: 0.2s opacity;
             }
           }
 
@@ -139,7 +146,7 @@ div.show-episodes-container {
               height: 15px;
               border-radius: 50%;
               color: #000000;
-              transition: 0.1s opacity, 0.1s color;
+              transition: 0.2s opacity, 0.2s color;
 
               &:hover {
                 opacity: 1;
@@ -168,7 +175,7 @@ div.show-episodes-container {
               background-color: #e4e4b2;
               border-radius: 2px;
               overflow: auto;
-              transition: 0.5s opacity;
+              transition: 0.5s opacity, 0.5s visibility;
 
               &::-webkit-scrollbar-track {
                 background-color: #cece97;
