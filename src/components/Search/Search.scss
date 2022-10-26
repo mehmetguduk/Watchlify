@@ -25,8 +25,12 @@ div.search-container {
       font-weight: 400;
       transition: 0.2s border;
 
-      &:focus {
+      &:hover {
         border: 1px solid #3434365d;
+      }
+
+      &:focus {
+        border: 1px solid #3434369c;
         outline: none;
       }
     }
@@ -136,6 +140,16 @@ div.search-container {
       margin-top: 3px;
       color: #000000;
       font-weight: 700;
+    }
+    p.copyright-text {
+      margin-top: 3px;
+      font-size: 10px;
+      color: #000000;
+      font-weight: 700;
+
+      a.copyright-link {
+        color: #000000;
+      }
     }
   }
 }

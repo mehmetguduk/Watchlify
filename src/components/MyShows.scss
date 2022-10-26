@@ -87,8 +87,20 @@ div.myshows-container {
     }
     h5.no-show-text {
       margin-top: 3px;
+      font-size: 13px;
       color: #000000;
       font-weight: 700;
+    }
+
+    p.copyright-text {
+      margin-top: 3px;
+      font-size: 10px;
+      color: #000000;
+      font-weight: 700;
+
+      a.copyright-link {
+        color: #000000;
+      }
     }
   }
 }

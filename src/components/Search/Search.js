@@ -44,7 +44,10 @@ export default function Search(props) {
         searchResults.length === 0 ?
           <div className="no-search-container">
             <img className="no-search-logo" src={watchlifyTransparent} alt='Watchlify Logo' />
-            <h5 className="no-search-text">Search for a show and add to your watchlist.</h5>
+            <h5 className="no-search-text">Search for a show and add to your watchlist</h5>
+            <p className="copyright-text">
+                © 2022 Copyright <a className="copyright-link" href="https://github.com/mehmetguduk" target="_blank" rel="noreferrer">Mehmet Güdük</a> All Rights Reserved
+            </p>
           </div> : <></>
       }
 

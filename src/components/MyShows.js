@@ -21,6 +21,9 @@ export default function MyShows(props) {
           <div className="no-show-container">
             <img className="no-show-logo" src={watchlifyTransparent} alt='Watchlify Logo' />
             <h5 className="no-show-text">There are no shows in your watch list</h5>
+            <p className="copyright-text">
+                © 2022 Copyright <a className="copyright-link" href="https://github.com/mehmetguduk" target="_blank" rel="noreferrer">Mehmet Güdük</a> All Rights Reserved
+            </p>
           </div> : <></>
       }
       {

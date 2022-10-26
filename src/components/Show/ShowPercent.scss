@@ -16,11 +16,11 @@ div.show-percent-container {
 
     div.progress {
       height: 100%;
-      background-color: #058d0580;
+      background-color: #058d05b4;
       transition: 0.2s width;
 
       span.progress-percent {
-        opacity: 0.7;
+        opacity: 0.55;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -28,7 +28,7 @@ div.show-percent-container {
         width: 100%;
         color: #000000;
         font-size: 13px;
-        font-weight: 400;
+        font-weight: 500;
         text-align: center;
       }
     }
