@@ -1,8 +1,6 @@
 div.tabs-container {
   ul.tab-list {
-    user-select: none;
     display: flex;
-    list-style-type: none;
 
     li.tab {
       cursor: pointer;

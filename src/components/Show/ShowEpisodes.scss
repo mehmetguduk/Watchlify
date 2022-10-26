@@ -86,7 +86,6 @@ div.show-episodes-container {
     ul.episodes-container {
       display: none;
       margin-top: 5px;
-      list-style-type: none;
 
       li.episode {
         cursor: pointer;
@@ -215,7 +214,6 @@ div.show-episodes-container {
               }
 
               img.hover-image {
-                -webkit-user-drag: none;
                 width: 100%;
                 border-radius: 2px;
               }

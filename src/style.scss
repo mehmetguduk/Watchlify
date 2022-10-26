@@ -10,10 +10,7 @@ input,
 button,
 * {
   font-family: "Rubik", sans-serif;
-}
-
-body {
-  background-color: rgb(218, 218, 218);
+  user-select: none;
 }
 
 div.App {
@@ -25,4 +22,16 @@ div.main-content {
   height: 450px;
   padding: 15px;
   background-color: #ffffff;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+body {
+  background-color: rgb(218, 218, 218);
+}
+
+ul {
+  list-style-type: none;
 }
