@@ -5,9 +5,26 @@ import { TiTick } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import placeholderEpisode from '../../images/placeholderEpisode.jpg'
-import Confetti from 'react-confetti'
 
 export default function ShowEpisodes(props) {
+
+  function sendWatchedToTheEnd() {
+    props.setWatchList(prevWatchList => {
+      let newWatchList = [];
+      let i = 0;
+      prevWatchList.forEach(show => {
+        if (((100 * show.watched.length) / show.episodeCount) === 100) {
+          newWatchList.splice(prevWatchList.length - 1, 0, show)
+        }
+        else {
+          newWatchList.splice(i, 0, show)
+          i++
+        }
+      })
+      setList(newWatchList)
+      return newWatchList
+    })
+  }
 
   function handleCompleteSeason(seasonIndex) {
     let showRelated = props.watchList.filter(show => show.id === props.detailedShow.id)[0]
@@ -52,6 +69,7 @@ export default function ShowEpisodes(props) {
         }
       }
     })
+    sendWatchedToTheEnd()
   }
 
   function handleSeasonClick(event) {
@@ -98,6 +116,7 @@ export default function ShowEpisodes(props) {
         props.setWatchList(newWatchList)
       }
     }
+    sendWatchedToTheEnd()
   }
 
   function isAllSeasonWatched(seasonIndex) {
@@ -110,15 +129,9 @@ export default function ShowEpisodes(props) {
 
   return (
     <div className='show-episodes-container'>
-
-
       {props.detailedShow.seasons.map((season, seasonIndex) => {
         return (
           <div className={`season-container season-${seasonIndex + 1}`} >
-
-            {
-              Math.round((100 * props.watchList.filter(show => show.id === props.detailedShow.id)[0].watched.length) / props.detailedShow.episodeCount) === 100 ? <Confetti width='350px' height='450px' gravity={0.02} numberOfPieces={80} opacity={0.8} /> : <Confetti width='350px' height='450px' gravity={0.02} numberOfPieces={0} opacity={0.8} />
-            }
 
             <div className='season-title-container'
               onClick={handleSeasonClick}>

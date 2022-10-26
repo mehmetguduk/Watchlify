@@ -15,6 +15,7 @@ export default function MyShows(props) {
 
   return (
     <div className="myshows-container">
+
       {
         props.detailedShow === false ?
           <ul className="shows-container">
@@ -24,7 +25,7 @@ export default function MyShows(props) {
               let showImage = show.image ? show.image.medium : placeholder;
               return (
                 <li
-                  className="show"
+                  className={Math.round((100 * show.watched.length) / show.episodeCount) === 100 ? 'show watched' : 'show'}
                   id={showId}
                   onClick={handleShowClick}
                 >

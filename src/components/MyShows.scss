@@ -25,6 +25,12 @@ div.myshows-container {
       border: 1px solid #ffffff;
       border-radius: 5px;
 
+      &.show.watched{
+        img.show-image{
+          filter: grayscale(100%);
+        }
+      }
+
       &:hover {
         h5.show-name {
           display: block;
