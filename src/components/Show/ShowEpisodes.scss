@@ -141,7 +141,8 @@ div.show-episodes-container {
           }
 
           div.episode-hover {
-            margin: 2px 0 0 5px;
+            padding-top: 2px;
+            margin-left: 5px;
 
             span.hover-info-icon {
               display: flex;
@@ -163,15 +164,17 @@ div.show-episodes-container {
               div.hover-content-container {
                 opacity: 1;
                 visibility: visible;
+                transition-delay: 0.5s;
               }
             }
 
             div.hover-content-container {
+              cursor: default;
               position: absolute;
               z-index: 99;
               opacity: 0;
               visibility: hidden;
-              top: 10px;
+              top: 15px;
               left: 49.8%;
               transform: translate(-50%, 0);
               width: 91.3%;
@@ -180,7 +183,7 @@ div.show-episodes-container {
               background-color: #e4e4b2;
               border-radius: 2px;
               overflow: auto;
-              transition: 0.5s opacity, 0.5s visibility;
+              transition: 0.1s opacity, 0.1s visibility;
 
               &::-webkit-scrollbar-track {
                 background-color: #cece97;
