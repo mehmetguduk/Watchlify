@@ -25,31 +25,36 @@ export default function SearchResults(props) {
         setList(prevWatchList)
         return prevWatchList
       })
+
     }
     else {
       getSearchById(clickedShowId).then(showResponse => {
-        if (showResponse.id) {
-          props.setWatchList(prevWatchList => {
-            getEpisodes(clickedShowId).then(episodesResponse => {
-              if (episodesResponse) {
-                let seasons = []
-                Object.keys(groupBy(episodesResponse, "season")).forEach(season => {
-                  const episodes = groupBy(episodesResponse, "season")[season]
-                  seasons.push(episodes)
-                })
-                showResponse.seasons = seasons
-                showResponse.watched = []
-                showResponse.episodeCount = episodesResponse.length
-              }
-              else {
-                showResponse.seasons = []
-                showResponse.watched = []
-                showResponse.episodeCount = 0
-              }
+        let show = showResponse
+
+        if (show.id) {
+          getEpisodes(clickedShowId).then(episodesResponse => {
+            if (episodesResponse) {
+              let seasons = []
+              Object.keys(groupBy(episodesResponse, "season")).forEach(season => {
+                const episodes = groupBy(episodesResponse, "season")[season]
+                seasons.push(episodes)
+              })
+              show.seasons = seasons
+              show.watched = []
+              show.episodeCount = episodesResponse.length
+            }
+            else {
+              show.seasons = []
+              show.watched = []
+              show.episodeCount = 0
+            }
+            props.setWatchList(prevWatchList => {
+              let newWatchList = [];
+              newWatchList.push(show)
+              prevWatchList.forEach(show => newWatchList.push(show))
+              setList(newWatchList)
+              return newWatchList
             })
-            prevWatchList.splice(0, 0, showResponse)
-            setList(prevWatchList)
-            return prevWatchList
           })
         }
       })

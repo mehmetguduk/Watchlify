@@ -9,14 +9,10 @@ async function getSearch(string) {
   await fetch(`http://api.tvmaze.com/search/shows?q=${encodeURIComponent(string)}`)
     .then(response => response.json())
     .then(jsonData => {
-
       response = jsonData
-      console.log(response)
     })
     .catch(error => {
       response = error
-      console.log(response)
-
     })
   return response
 };

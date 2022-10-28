@@ -9,7 +9,9 @@ function getList() {
     return JSON.parse(localStorage.getItem("WATCHLIST"))
   }
   else {
-    return localStorage.setItem("WATCHLIST", JSON.stringify([]))
+    let emptyArray = []
+    localStorage.setItem("WATCHLIST", JSON.stringify(emptyArray))
+    return emptyArray
   }
 }
 
